@@ -1,4 +1,5 @@
 import productsData from '../../src/constants/products.json';
+import { logger } from './log'
 
 /**
  * @swagger
@@ -16,6 +17,7 @@ import productsData from '../../src/constants/products.json';
  */
 export default (req, res) => {
   const userName = req.query['userName'];
+  logger.info(`getting products for ${userName}`);
 
   // Set 5 product as fav
   if (userName === 'fav_user') {

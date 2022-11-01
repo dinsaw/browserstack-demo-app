@@ -132,6 +132,11 @@ const Header = () => {
                   <strong>Favourites</strong>
                 </a>
               </Link>
+              <Link href="/recommended">
+                <a id="recommended" className="Navbar_link__3Blki">
+                  <strong>Recommended</strong>
+                </a>
+              </Link>
             </nav>
           </div>
           <div className="flex flex-1 justify-end align-center space-x-8">
