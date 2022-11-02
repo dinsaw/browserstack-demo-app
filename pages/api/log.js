@@ -1,11 +1,17 @@
-const winston = require('winston');
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, json, simple } = format;
 
-const logger = winston.createLogger({
+const logger = createLogger({
   level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { app: 'browserstack-demo-app' },
+  format: combine(
+    timestamp(),
+    format.printf((m) => {
+      return `${m.timestamp} ${m.level} ${m.message} service=${m.service}`;
+    })
+  ),
+  defaultMeta: { service: 'browserstack-demo-app' },
   transports: [
-    new winston.transports.File({ filename: 'combined.log' }),
+    new transports.File({ filename: 'combined.log' }),
   ],
 });
 
